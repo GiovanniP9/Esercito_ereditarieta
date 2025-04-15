@@ -3,6 +3,7 @@ from fanteria import Fanteria
 from supportoLogistico import Supporto_logistico
 from ricognizione import Ricognizione
 from artiglieria import Artiglieria
+from unitaMilitare import Unita_militare
 
 # Definizione della classe Esercito
 class Esercito:
