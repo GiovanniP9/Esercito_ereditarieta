@@ -3,8 +3,8 @@ from    Controllo_militare import Controllo_militare
 def menu():
     controllo = Controllo_militare()
     
-    while True:
-        print("\nBenvenuto nel simulatore di battaglia!")
+    print("\nBenvenuto nel simulatore di battaglia!")
+    while True: 
         print("1. Crea un esercito")
         print("2. Mostra gli eserciti")
         print("3. Mostra le unità di un esercito")
