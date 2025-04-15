@@ -3,77 +3,56 @@ from fanteria import Fanteria
 from supportoLogistico import Supporto_logistico
 from ricognizione import Ricognizione
 from artiglieria import Artiglieria
+from esercito import Esercito
 
-class Controllo_militare():
+class Controllo_militare:
     def __init__(self):
-        self.unita_registrate = {}
-        
-    def aggiungi_unita(self, unita):
-        self.unita_registrate[unita.nome] = unita
-        print(f"Unità {unita.nome} aggiunta al controllo militare.")
+        self.eserciti = {}
+
+    def crea_esercito(self, nome_esercito):
+        esercito = Esercito(nome_esercito)
     
-    def mostra_unita(self):
-        for nome, unita in self.unita_registrate.items():
-            print(f"Nome: {nome}, Numero: {unita.numero_soldati}")
-   
-    def dettagli_unita(self, nome):
-        if nome in self.unita_registrate:
-            unita = self.unita_registrate[nome]
-            return f"Nome: {unita.nome}, Numero Soldati: {unita.numero_soldati}"
-        else:
-            return "Unità non trovata."
+        unita1 = Fanteria("Fanteria 1", 100)
+        unita2 = Cavalleria("Cavalleria 1", 50)
+        unita3 = Supporto_logistico("Supporto 1", 30)
+        unita4 = Ricognizione("Ricognizione 1", 20)
+        unita5 = Artiglieria("Artiglieria 1", 40)
+
+        esercito.aggiungi_unita(unita1)
+        esercito.aggiungi_unita(unita2)
+        esercito.aggiungi_unita(unita3)
+        esercito.aggiungi_unita(unita4)
+        esercito.aggiungi_unita(unita5)
         
-    def attacca_unita(self, nome):
-        if nome in self.unita_registrate:
-            unita = self.unita_registrate[nome]
-            unita.attacca()
-        else:
-            print("Unità non trovata.")
-    def ritira_unita(self, nome):
-        if nome in self.unita_registrate:
-            unita = self.unita_registrate[nome]
-            unita.ritira()
-        else:
-            print("Unità non trovata.")
-    def muovi_unita(self, nome):
-        if nome in self.unita_registrate:
-            unita = self.unita_registrate[nome]
-            unita.muovi()
-        else:
-            print("Unità non trovata.")
+        self.eserciti[nome_esercito] = esercito
+        print(f"Esercito '{nome_esercito}' creato.")
     
 
-# Creazione delle unità
-unita1 = Fanteria("Fanteria 1", 100)
-unita2 = Cavalleria("Cavalleria 1", 50)
-unita3 = Supporto_logistico("Supporto 1", 30)
-unita4 = Ricognizione("Ricognizione 1", 20)
-unita5 = Artiglieria("Artiglieria 1", 40)
-
-# Creazione dell'esercito
-controllo = Controllo_militare()
-controllo.aggiungi_unita(unita1)
-controllo.aggiungi_unita(unita2)
-controllo.aggiungi_unita(unita3)
-controllo.aggiungi_unita(unita4)
-controllo.aggiungi_unita(unita5)
-
-# Mostra le unità registrate
-controllo.mostra_unita()
-controllo.dettagli_unita("Fanteria 1")
-controllo.dettagli_unita("Cavalleria 1")
-controllo.dettagli_unita("Supporto 1")
-controllo.dettagli_unita("Ricognizione 1")
-controllo.dettagli_unita("Artiglieria 1")
-
-# Attacca con un unità
-
-controllo.attacca_unita("Fanteria 1")
-
-# Ritira con un unità
-
-controllo.ritira_unita("Artiglieria 1")
-
-# Muove con un unità
-
-controllo.muovi_unita("Supporto 1")
+    def mostra_eserciti(self):
+        print("\nEserciti registrati:")
+        for nome_esercito in self.eserciti:
+            print(f"- {nome_esercito}")
+    
+    def mostra_unita_esercito(self, nome_esercito):
+        if nome_esercito in self.eserciti:
+            self.eserciti[nome_esercito].mostra_unita()
+        else:
+            print(f"Esercito '{nome_esercito}' non trovato.")
+    
+    def attacca_unita_esercito(self, nome_esercito, nome_unita):
+        if nome_esercito in self.eserciti:
+            self.eserciti[nome_esercito].attacca_unita(nome_unita)
+        else:
+            print(f"Esercito '{nome_esercito}' non trovato.")
+    
+    def ritira_unita_esercito(self, nome_esercito, nome_unita):
+        if nome_esercito in self.eserciti:
+            self.eserciti[nome_esercito].ritira_unita(nome_unita)
+        else:
+            print(f"Esercito '{nome_esercito}' non trovato.")
+    
+    def muovi_unita_esercito(self, nome_esercito):
+        if nome_esercito in self.eserciti:
+            self.eserciti[nome_esercito].muovi_tutte()
+        else:
+            print(f"Esercito '{nome_esercito}' non trovato.")
