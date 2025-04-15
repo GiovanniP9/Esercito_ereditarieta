@@ -47,5 +47,6 @@ def menu():
             case _:
                 print("Opzione non valida!")
 
+# Avvio del simulatore
 if __name__ == "__main__":
     menu()
