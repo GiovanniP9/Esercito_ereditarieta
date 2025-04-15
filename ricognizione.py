@@ -4,5 +4,5 @@ class Ricognizione(Unita_militare):
     def __init__(self, nome, numero_soldati):
         super().__init__(nome, numero_soldati)
 
-    def conduci_ricognizione(self):
+    def conduci_ricognizione(self): # metodo per la missione di ricognizione
         print(f"L'unità {self.nome} sta conducendo una missione di ricognizione con {self.numero_soldati} soldati.")

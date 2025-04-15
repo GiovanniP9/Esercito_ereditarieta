@@ -2,7 +2,7 @@ from    Controllo_militare import Controllo_militare
 
 def menu():
     controllo = Controllo_militare()
-    
+    # Menu principale del simulatore di battaglia - Implementare la gestione degli eserciti, delle unità, delle azioni, ecc.
     print("\nBenvenuto nel simulatore di battaglia!")
     while True: 
         print("1. Crea un esercito")
